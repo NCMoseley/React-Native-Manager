@@ -5,15 +5,15 @@ const styles = {
   buttonStyle: {
     flex: 1,
     alignSelf: 'stretch',
-    backgroundColor: '#fff',
+    backgroundColor: 'beige',
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: '#007aff',
+    borderColor: 'yellowgreen',
     marginHorizontal: 5
   },
   textStyle: {
     alignSelf: 'center',
-    color: '#007aff',
+    color: 'yellowgreen',
     fontSize: 16,
     fontWeight: '600',
     paddingVertical: 10
