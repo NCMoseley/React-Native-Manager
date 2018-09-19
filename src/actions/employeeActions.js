@@ -1,4 +1,8 @@
-import { EMPLOYEE_UPDATE, EMPLOYEE_CREATE } from './types';
+import {
+  EMPLOYEE_UPDATE,
+  EMPLOYEE_CREATE,
+  EMPLOYEE_FETCH_SUCCESS
+} from './types';
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 
@@ -21,6 +25,20 @@ export const employeeCreate = ({ name, phone, shift }) => {
       .then(() => {
         dispatch({ type: EMPLOYEE_CREATE });
         Actions.pop();
+      });
+  };
+};
+
+export const employeeFetch = () => {
+  const { currentUser } = firebase.auth();
+
+  return dispatch => {
+    firebase
+      .database()
+      .ref(`/users/${currentUser.uid}/employees`)
+      // this method call is persistant throughout the lifecycle of the app. :)
+      .on('value', snapshot => {
+        dispatch({ type: EMPLOYEE_FETCH_SUCCESS, payload: snapshot.val() });
       });
   };
 };
