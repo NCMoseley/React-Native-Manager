@@ -1,4 +1,4 @@
-import EMPLOYEE_UPDATE from '../actions/types';
+import { EMPLOYEE_UPDATE } from '../actions/types';
 
 const INITIAL_STATE = { name: '', phone: '', shift: '' };
 
