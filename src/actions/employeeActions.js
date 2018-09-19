@@ -12,12 +12,15 @@ export const employeeUpdate = ({ prop, value }) => {
 
 export const employeeCreate = ({ name, phone, shift }) => {
   const { currentUser } = firebase.auth();
-  // Wrapping with fat arrow function to satisfy requirements of Redux-Thunk
-  return () => {
+  // Wrapping with fat arrow function to satisfy requirements of Redux-Thunk to prevent Async error
+  return dispatch => {
     firebase
       .database()
       .ref(`/users/${currentUser.uid}/employees`)
       .push({ name, phone, shift })
-      .then(() => Actions.pop());
+      .then(() => {
+        dispatch({ type: EMPLOYEE_CREATE });
+        Actions.pop();
+      });
   };
 };
