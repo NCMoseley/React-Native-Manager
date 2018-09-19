@@ -14,7 +14,8 @@ const styles = {
 };
 
 const CardSection = props => (
-  <View style={styles.containerStyle}>{props.children}</View>
+  // Adding an array allows us to make use of styles sent through props. The rightmost style will overwrite any styles to the left.
+  <View style={[styles.containerStyle, props.style]}>{props.children}</View>
 );
 
 export { CardSection };
