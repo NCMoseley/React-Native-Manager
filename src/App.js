@@ -6,7 +6,6 @@ import firebase from 'firebase';
 
 import reducers from './reducers/';
 import { config } from '../env.js';
-import LoginForm from './components/LoginForm';
 import Router from './Router';
 
 class App extends Component {
