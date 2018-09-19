@@ -1,4 +1,8 @@
-import { EMPLOYEE_UPDATE, EMPLOYEE_CREATE } from '../actions/types';
+import {
+  EMPLOYEE_UPDATE,
+  EMPLOYEE_CREATE,
+  EMPLOYEE_SAVE_SUCCESS
+} from '../actions/types';
 
 const INITIAL_STATE = { name: '', phone: '', shift: '' };
 
@@ -8,6 +12,8 @@ export default (state = INITIAL_STATE, action) => {
       // this is key interpolation. the key and value will both be created at runtime. The EMPLOYEE_UPDATE action type has a payload of 'prop' and 'value'
       return { ...state, [action.payload.prop]: action.payload.value };
     case EMPLOYEE_CREATE:
+      return INITIAL_STATE;
+    case EMPLOYEE_SAVE_SUCCESS:
       return INITIAL_STATE;
     default:
       return state;
